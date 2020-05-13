@@ -124,4 +124,13 @@
     </xacro:bag_plugin_macro>
   </xacro:if>
 
+
+
+  <!-- Import macro for realsense-RS200 camera-->
+  <!-- <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-RS200.macro.xacro"/> -->
+  <!-- Create camera instance -->
+  <!-- <xacro:realsense-rs200 prefix="" parent="base_link">
+      <origin xyz="0.4 0 0.02" rpy="0 0 0" />   
+  </xacro:realsense-rs200> -->
+  
 </robot>
