@@ -8,6 +8,7 @@ import collections
 from curses import textpad
 from uav_abstraction_layer.srv import TakeOff, Land
 from geometry_msgs.msg import TwistStamped, PoseStamped
+from std_msgs.msg import Float32
 
 class NumericalParam(object):
     def __init__(self, name, min_value, max_value, value):
@@ -256,8 +257,21 @@ class VelState(State):
         self.console = console
         self.uav_pose = PoseStamped()
         self.uav_yaw = 0.0
+        self.flag = 1
+        self.threshold = 3.0 # Umbral a partir del cual el dron se detiene antes de chocarse
         self.pose_sub = rospy.Subscriber('ual/pose', PoseStamped, self.pose_callback)
+
+        self.dist_sub = rospy.Subscriber('r200/min_distance', Float32, self.dist_callback)
         self.velocity_pub = rospy.Publisher('ual/set_velocity', TwistStamped, queue_size=1)
+
+        self.deb_pub = rospy.Publisher('deb', Float32, queue_size=1)
+
+    def dist_callback(self, data):
+        if data.data < self.threshold:
+            self.flag = 0
+        else:
+            self.flag = 1
+        self.deb_pub.publish(data)
 
     def pose_callback(self, data):
         self.uav_pose = data
@@ -282,7 +296,7 @@ class VelState(State):
                 vel_cmd = TwistStamped()
                 vel_cmd.header.stamp = rospy.Time.now()
                 vel_cmd.header.frame_id = 'map'
-                vx = +vel_mul * joy.axis['move_forward'].value
+                vx = +vel_mul * joy.axis['move_forward'].value * self.flag
                 vy = -vel_mul * joy.axis['move_right'].value
                 vz = +vel_mul * joy.axis['move_up'].value
                 yaw_rate = -rate_mul * joy.axis['move_yaw'].value
