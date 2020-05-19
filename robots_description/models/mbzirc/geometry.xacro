@@ -63,7 +63,7 @@
     <xacro:insert_block name="body_inertia" />
   </xacro:multirotor_base_macro>
 
-  <xacro:camera_macro
+  <!-- <xacro:camera_macro
     namespace="${namespace}"
     parent_link="base_link"
     camera_suffix="0"
@@ -80,7 +80,7 @@
     >
     <xacro:insert_block name="camera_cylinder"/>
     <origin xyz="0 0.24 -0.24" rpy="0 1.57 0" />
-  </xacro:camera_macro>
+  </xacro:camera_macro> -->
 
   <!-- Magnetic gripper -->
   <link name="magnetic_gripper">
