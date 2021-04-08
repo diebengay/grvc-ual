@@ -1,5 +1,5 @@
 # grvc-ual
-[![Releases](https://img.shields.io/github/release/grvcTeam/grvc-ual.svg)](https://github.com/grvcTeam/grvc-ual/releases)
+[![Releases](https://img.shields.io/github/release/grvcTeam/grvc-ual.svg)](https://github.com/grvcTeam/grvc-ual/releases) [![DOI](https://img.shields.io/badge/DOI-10.1177%2F1729881420925011-blue)](https://doi.org/10.1177/1729881420925011)
 
 A repository for the GRVC UAV abstraction layer.
 
@@ -48,10 +48,15 @@ You can find detailed instructions for installation and how to use the UAL in th
 If you find UAL useful in your research, please consider citing:
 
 ```
-@inproceedings{real2018ual,
-    Author = {Fran Real, Arturo Torres-González, Pablo Ramón Soria, Jesús Capitán and Aníbal Ollero},
-    Title = {UAL: an abstraction layer for unmanned vehicles},
-    Booktitle= {2nd International Symposium on Aerial Robotics (ISAR)},
-    Year = {2018}
+@article{real_ijars20, 
+    author = {Fran Real and Arturo Torres-Gonz\'{a}lez and Pablo Ram\'{o}n Soria and Jes\'{u}s Capit\'{a}n and Anibal Ollero}, 
+    title = {Unmanned aerial vehicle abstraction layer: An abstraction layer to operate unmanned aerial vehicles}, 
+    journal = {International Journal of Advanced Robotic Systems}, 
+    year = {2020}, 
+    volume = {17}, 
+    number = {4}, 
+    pages = {1-13}, 
+    doi = {10.1177/1729881420925011},
+    url = {https://doi.org/10.1177/1729881420925011}
 }
 ```
